@@ -12,7 +12,8 @@
     "node": true
   },
   "globals": {
-    "alert": true
+    "alert": true,
+    "self": true
   },
   "parserOptions": {
     "sourceType": "module",
@@ -43,6 +44,7 @@
         "allowTemplateLiterals": true
       }
     ],
+    "no-restricted-globals": "off",
     "no-underscore-dangle": [
       "error",
       {

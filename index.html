@@ -15,6 +15,7 @@ limitations under the License.
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Set character encoding -->
   <meta charset="utf-8">
@@ -25,6 +26,7 @@ limitations under the License.
   <!-- Request styles -->
   <link rel="stylesheet" href="/style/main.css" />
 </head>
+
 <body>
   <header>
     <h1>Photo blog</h1>
@@ -58,14 +60,15 @@ limitations under the License.
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
-        .then(swReg => {
-          console.log('Service Worker is registered', swReg);
-        })
-        .catch(err => {
-          console.error('Service Worker Error', err);
-        });
+          .then(swReg => {
+            console.log('Service Worker is registered', swReg);
+          })
+          .catch(err => {
+            console.error('Service Worker Error', err);
+          });
       });
     }
   </script>
 </body>
+
 </html>
