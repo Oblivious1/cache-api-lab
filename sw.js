@@ -10,6 +10,7 @@ const filesToCache = [
 const staticCacheName = "pages-cache-v1";
 
 const FILE_NOT_FOUND_URL = "pages/404.html";
+const OFFLINE_URL = "pages/offline.html";
 
 self.addEventListener("install", event => {
   console.log("Attempting to install service worker and cache static assets");
@@ -46,6 +47,7 @@ self.addEventListener("fetch", event => {
       .catch(error => {
         console.log("error:", error);
         // TODO 6 - Respond with custom offline page
+        return caches.match(OFFLINE_URL);
       }),
   );
 });
