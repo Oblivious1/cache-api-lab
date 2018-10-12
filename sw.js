@@ -27,17 +27,20 @@ self.addEventListener("fetch", event => {
           return response;
         }
         console.log("Network request for ", event.request.url);
-        return fetch(event.request).then(fetchResponse => {
+        return fetch(event.request).then(async fetchResponse => {
           console.log(`response status: ${fetchResponse.status}`);
 
+          let resultResponse;
+
           if (fetchResponse.status === 404) {
-            // requested page not found, so set our reponse to 404.html
+            resultResponse = await caches.match(FILE_NOT_FOUND_URL);
           } else {
-            return caches.open(staticCacheName).then(cache => {
-              cache.put(event.request.url, fetchResponse.clone());
-              return fetchResponse;
-            });
+            resultResponse = fetchResponse;
+            const cache = await caches.open(staticCacheName);
+            cache.put(event.request.url, fetchResponse.clone());
           }
+
+          return resultResponse;
         });
       })
       .catch(error => {
