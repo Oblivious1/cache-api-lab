@@ -7,7 +7,7 @@ const filesToCache = [
   "pages/404.html",
 ];
 
-const staticCacheName = "pages-cache-v2";
+var staticCacheName = "pages-cache-v2";
 
 const FILE_NOT_FOUND_URL = "pages/404.html";
 const OFFLINE_URL = "pages/offline.html";
